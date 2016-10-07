@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo 
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd"> 
+
+ 	<!--dubbo 服务提供者应用名称 -->
+    <dubbo:application name="bss-provider" />
+
+    <!--dubbo 注册中心-->
+    <dubbo:registry address="zookeeper://online.xwood.net:2181" />
+
+    <!--服务提供者 端口-->
+    <dubbo:protocol name="dubbo" port="20880" />
+
+    <!--dubbo提供服务-->
+    <dubbo:service interface="com.xwood.globel.iprovider.ISessionProvider" ref="sessionProvider" />
+    
+
+    <!--spring bean 对象-->
+    <bean id="sessionProvider" class="com.xwood.bss.provider.SessionProvider" /> 
+    
+ 
+</beans>
